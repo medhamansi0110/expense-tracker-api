@@ -9,22 +9,20 @@ const PORT = 3000;
 let expenses = [];
 let nextId = 1;
 
-// =========================
+
 // Home Route
-// =========================
+
 app.get("/", (req, res) => {
     res.send("Expense Tracker API is Running!");
 });
 
 
-// =========================
 // Add Expense(s)
-// =========================
+
 app.post("/expenses", (req, res) => {
 
     const data = req.body;
 
-    // Accept both single object and array
     const expensesToAdd = Array.isArray(data) ? data : [data];
 
     const addedExpenses = [];
@@ -57,9 +55,8 @@ app.post("/expenses", (req, res) => {
 });
 
 
-// =========================
 // Search Expenses (Bonus)
-// =========================
+
 app.get("/expenses/search", (req, res) => {
 
     const keyword = req.query.keyword;
@@ -83,9 +80,8 @@ app.get("/expenses/search", (req, res) => {
 });
 
 
-// =========================
 // Monthly Summary (Bonus)
-// =========================
+
 app.get("/expenses/monthly-summary", (req, res) => {
 
     const { month, year } = req.query;
@@ -122,9 +118,8 @@ app.get("/expenses/monthly-summary", (req, res) => {
 });
 
 
-// =========================
 // Total Expenses
-// =========================
+
 app.get("/expenses/total", (req, res) => {
 
     const category = req.query.category;
@@ -151,9 +146,8 @@ app.get("/expenses/total", (req, res) => {
 });
 
 
-// =========================
 // View All / Filter by Category
-// =========================
+
 app.get("/expenses", (req, res) => {
 
     const category = req.query.category;
@@ -171,9 +165,8 @@ app.get("/expenses", (req, res) => {
 });
 
 
-// =========================
 // Delete Expense
-// =========================
+
 app.delete("/expenses/:id", (req, res) => {
 
     const id = Number(req.params.id);
@@ -196,9 +189,9 @@ app.delete("/expenses/:id", (req, res) => {
 });
 
 
-// =========================
+
 // Start Server
-// =========================
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
